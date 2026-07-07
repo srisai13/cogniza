@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ---- Careers Page: Mobile-only overrides ---- */
+        @media (max-width: 768px) {
+            .hiring-process-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 15px !important;
+            }
+            .life-at-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            .careers-main-container {
+                padding: 30px 15px !important;
+            }
+            /* Hide the arrow dividers between steps on mobile */
+            .hiring-process-grid .step-arrow {
+                display: none !important;
+            }
+        }
+        @media (max-width: 400px) {
+            .hiring-process-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
 </head>
 <body style="background: #f4f5f9;">
     <header>
@@ -64,7 +89,7 @@
 
             <div style="margin-bottom: 50px;">
                 <h3 style="font-size: 1.8rem; font-weight: 700; color: #130f26; margin-bottom: 25px; text-align: center;">Life at Cogniza</h3>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                <div class="life-at-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
                     <div style="display: flex; gap: 15px; align-items: flex-start; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
                         <i class="fas fa-laptop-house" style="font-size: 1.8rem; color: var(--primary-color);"></i>
                         <div>
@@ -102,7 +127,7 @@
 
             <div style="margin-bottom: 50px;">
                 <h3 style="font-size: 1.8rem; font-weight: 700; color: #130f26; margin-bottom: 25px; text-align: center;">Our Hiring Process</h3>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+                <div class="hiring-process-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
                     <div style="padding: 20px;">
                         <div style="width: 60px; height: 60px; background: #f0ebff; color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 15px auto;">
                             <i class="fas fa-file-alt"></i>
@@ -112,7 +137,7 @@
                     </div>
                     <div style="padding: 20px; position: relative;">
                         <!-- Arrow -->
-                        <div style="position: absolute; top: 50px; left: -20px; color: #ccc;"><i class="fas fa-chevron-right"></i></div>
+                        <div class="step-arrow" style="position: absolute; top: 50px; left: -20px; color: #ccc;"><i class="fas fa-chevron-right"></i></div>
                         <div style="width: 60px; height: 60px; background: #f0ebff; color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 15px auto;">
                             <i class="fas fa-phone"></i>
                         </div>

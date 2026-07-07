@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ---- About Page: Mobile-only overrides ---- */
+        @media (max-width: 768px) {
+            .leadership-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 14px !important;
+            }
+            .why-choose-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            .about-main-container {
+                padding: 30px 15px !important;
+            }
+            .about-hero-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+        }
+        @media (max-width: 400px) {
+            .leadership-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
 </head>
 <body style="background: #f4f5f9;">
     <header>
@@ -103,7 +128,7 @@
             
             <div style="background: #f8f9ff; border-radius: 12px; padding: 40px; margin-bottom: 40px;">
                 <h3 style="font-size: 1.8rem; font-weight: 700; color: #130f26; margin-bottom: 25px; text-align: center;">Why Choose Cogniza?</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div class="why-choose-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                     <div>
                         <ul style="list-style: none; padding: 0;">
                             <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 15px;">
@@ -171,7 +196,7 @@
 
             <div style="margin-bottom: 50px;">
                 <h3 style="font-size: 1.8rem; font-weight: 700; color: #130f26; margin-bottom: 35px; text-align: center;">Meet Our Leadership</h3>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                <div class="leadership-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
                     <!-- Managing Director -->
                     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;">
                         <div style="height: 250px; background: #e0e0e0; position: relative;">

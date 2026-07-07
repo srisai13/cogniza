@@ -2795,42 +2795,100 @@ header {
         gap: 15px;
     }
 
-    /* ---- Journey (Expanding Cards) ---- */
+    /* ---- Journey (Expanding Cards) — Mobile Redesign ---- */
+    .journey-section {
+        padding: 10px 0;
+    }
+    .journey-header h2 {
+        font-size: 1.6rem;
+    }
+    .journey-header p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
     .expanding-cards-container {
         flex-direction: column;
         height: auto;
         min-height: unset;
         gap: 10px;
-        padding: 0 15px;
+        padding: 0 5px;
+        margin: 20px 0;
     }
+    /* Collapsed card — shows photo + icon + title */
     .expand-card {
-        height: 70px;
+        height: 130px;
         width: 100% !important;
-        border-radius: 16px;
+        flex: none !important;
+        border-radius: 14px;
         margin-bottom: 0;
+        align-items: flex-end;
+        transition: height 0.45s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    .expand-card.active {
-        height: 200px;
-        width: 100% !important;
+    /* Active card — expands to show full content */
+    .expand-card.active,
+    .expand-card:hover {
+        height: 290px;
+        flex: none !important;
+        box-shadow: 0 12px 35px rgba(157, 0, 255, 0.35);
+        border-color: var(--primary-color);
     }
+    /* Icon: always visible, vertically centered on collapsed */
     .ec-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 0.9rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
         top: 50%;
-        left: 20px;
+        left: 15px;
         transform: translateY(-50%);
+        background: rgba(255,255,255,0.25);
+        backdrop-filter: blur(4px);
     }
-    .expand-card.active .ec-icon {
-        top: 20px;
+    /* On active card, move icon to top-left */
+    .expand-card.active .ec-icon,
+    .expand-card:hover .ec-icon {
+        top: 15px;
+        left: 15px;
         transform: none;
     }
-    .ec-content h3 {
-        font-size: 1rem;
+    .ec-number {
+        font-size: 4rem;
+        opacity: 0.12;
     }
-
+    .expand-card.active .ec-number,
+    .expand-card:hover .ec-number {
+        opacity: 0.22;
+    }
+    /* Title always visible at bottom of card */
+    .ec-content {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        padding: 12px 15px;
+        min-width: unset;
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 100%);
+    }
+    .ec-content h3 {
+        font-size: 0.95rem;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    /* Description hidden on collapsed, shown on active */
     .ec-content p {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        margin-top: 6px;
+        display: none;
+    }
+    .expand-card.active .ec-content p,
+    .expand-card:hover .ec-content p {
+        display: block;
+    }
+    .expand-card.active .ec-content h3,
+    .expand-card:hover .ec-content h3 {
+        font-size: 1.05rem;
+        white-space: normal;
+        margin-bottom: 6px;
     }
 
     /* ---- Success Stats ---- */
@@ -2951,7 +3009,7 @@ header {
         margin-bottom: 15px;
     }
 
-    /* ---- Program Pages (inline-style overrides) ---- */
+    /* ---- Program Pages ---- */
     main[style*="padding: 100px 20px"] {
         padding: 40px 15px !important;
     }
@@ -3033,27 +3091,14 @@ header {
         right: 20px;
     }
 
-    /* ---- General image overflow guard ---- */
-    img {
-        max-width: 100%;
-    }
-    * {
-        box-sizing: border-box;
-    }
+    img { max-width: 100%; }
+    * { box-sizing: border-box; }
 }
 
 /* Extra-small phones */
 @media (max-width: 400px) {
-    .hero-title {
-        font-size: 1.9rem;
-    }
-    .domains-grid {
-        grid-template-columns: 1fr;
-    }
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    .logo-text h1 {
-        font-size: 1.5rem;
-    }
+    .hero-title { font-size: 1.9rem; }
+    .domains-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .logo-text h1 { font-size: 1.5rem; }
 }
