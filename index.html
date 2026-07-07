@@ -1,0 +1,914 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cogniza</title>
+    <link rel="icon" href="logos/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Enquiry Modal Popup -->
+    <div id="enquiryModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeModal" class="modal-close">&times;</button>
+            <div class="modal-badge">Student Enquiry Form</div>
+            <h2 class="modal-title">SHAPE YOUR CAREER WITH <span class="text-gradient">COGNIZA</span></h2>
+            <p class="modal-subtitle">Connect with industry mentors, join high-demand programs, and unlock exciting opportunities for your future career.</p>
+            
+            <!-- Hidden iframe for silent Google Form submission -->
+            <script>var formSubmitted = false;</script>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(formSubmitted) { document.getElementById('enquiryModal').classList.remove('show'); alert('Thank you! Your enquiry has been submitted successfully.'); }"></iframe>
+            
+            <form id="enquiryForm" class="modal-form" action="https://docs.google.com/forms/d/e/1FAIpQLSecvb1_L_hGK0VTXsNxdIaizP9nSGE9PbzrsPonJ01lSrnVHg/formResponse" method="POST" target="hidden_iframe" onsubmit="formSubmitted=true; setTimeout(() => this.reset(), 500);">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="far fa-user"></i>
+                            <input type="text" name="entry.19428930" id="eq-name" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="far fa-envelope"></i>
+                            <input type="email" name="emailAddress" id="eq-email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone-alt"></i>
+                            <input type="tel" name="entry.1872168905" id="eq-phone" placeholder="+91 8884456745" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Interested Domain</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-book-open"></i>
+                            <select name="entry.330684132" id="courseSelect" required>
+                                <option value="" disabled selected>Select a Domain</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>College / University</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-graduation-cap"></i>
+                            <input type="text" name="entry.309849495" id="eq-college" placeholder="e.g. IIT Bombay" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Language</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-language"></i>
+                            <input type="text" name="entry.1686906330" id="eq-lang" placeholder="e.g. English, Hindi" required>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit-modal">Submit Enquiry <i class="far fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <header>
+        <div class="container top-bar">
+            <div class="logo">
+                <div class="logo-icon-wrapper">
+                    <img src="logos/c_logo.jpeg" alt="Cogniza Icon">
+                </div>
+                <div class="logo-text">
+                    <h1>COGNIZA</h1>
+                    <p class="slogan-gradient">"Beyond Learning. Beyond Limits."</p>
+                </div>
+            </div>
+
+            <div class="nav-container">
+                <nav class="pill-nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html#home" >Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html#programs">Programs</a></li>
+                        <li><a href="index.html#offers">Offer Plans</a></li>
+                        <li class="nav-dropdown">
+                            <a href="index.html#careers">Careers <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 3px;"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="ambassador.html">Become Cogniza Campus Ambassador</a></li>
+                                <li><a href="careers.html">Looking for job</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
+                <a href="register.html" class="btn btn-outline">Register</a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main id="home" class="container hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Launch Your<br><span class="text-gradient">Dream Career</span><br>With Cogniza</h1>
+            
+            <h2 class="dynamic-subtitle">Whether it's <span id="typing-text" class="text-gradient">AI and ML</span><span class="cursor">|</span></h2>
+            <div class="title-underline"></div>
+
+            <p class="hero-description">
+                Go beyond the classroom. The Cogniza internship program provides immersive training across IT, Non-IT, and Pharmacy sectors. Work on live projects, gain real-world experience, and build your portfolio alongside industry experts.
+            </p>
+            
+            <a href="projects.html" class="btn-view-projects">View Projects</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/home_image.png" alt="Cogniza Internship Orientation" id="hero-img">
+        </div>
+    </main>
+
+    <!-- Alumni Section -->
+    <section id="about" class="alumni-section container">
+        <h2 class="section-heading">Our Alumni Works At</h2>
+        
+        <!-- Track 1: Scrolls Left -->
+        <div class="marquee-container">
+            <div class="marquee-track track-1">
+                <div class="marquee-group">
+                    <div class="alumni-card"><img src="logos/google.svg" alt="Google"></div>
+                    <div class="alumni-card"><img src="logos/infosys.svg" alt="Infosys"></div>
+                    <div class="alumni-card"><img src="logos/wipro.jpeg" alt="Wipro" style="transform: scale(1.5);"></div>
+                    <div class="alumni-card"><img src="logos/ibm.jpeg" alt="IBM" style="transform: scale(1.5);"></div>
+                    <div class="alumni-card"><span style="display:flex; flex-direction:column; line-height:1; font-size:1.1rem;"><span style="color:#E31837; font-weight: 800;">Tech</span><span style="color:#4A4F54; font-weight: 800;">Mahindra</span></span></div>
+                    <div class="alumni-card"><img src="logos/capgemini.svg" alt="Capgemini"></div>
+                    <div class="alumni-card"><img src="logos/oracle.svg" alt="Oracle"></div>
+                </div>
+                <div class="marquee-group">
+                    <div class="alumni-card"><img src="logos/google.svg" alt="Google"></div>
+                    <div class="alumni-card"><img src="logos/infosys.svg" alt="Infosys"></div>
+                    <div class="alumni-card"><img src="logos/wipro.jpeg" alt="Wipro" style="transform: scale(1.5);"></div>
+                    <div class="alumni-card"><img src="logos/ibm.jpeg" alt="IBM" style="transform: scale(1.5);"></div>
+                    <div class="alumni-card"><span style="display:flex; flex-direction:column; line-height:1; font-size:1.1rem;"><span style="color:#E31837; font-weight: 800;">Tech</span><span style="color:#4A4F54; font-weight: 800;">Mahindra</span></span></div>
+                    <div class="alumni-card"><img src="logos/capgemini.svg" alt="Capgemini"></div>
+                    <div class="alumni-card"><img src="logos/oracle.svg" alt="Oracle"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Track 2: Scrolls Right -->
+        <div class="marquee-container mt-3">
+            <div class="marquee-track track-2">
+                <div class="marquee-group">
+                    <div class="alumni-card"><img src="logos/accenture.svg" alt="Accenture"></div>
+                    <div class="alumni-card"><img src="logos/gpay.svg" alt="G Pay"></div>
+                    <div class="alumni-card"><img src="logos/zomato.svg" alt="Zomato"></div>
+                    <div class="alumni-card"><img src="logos/spotify.svg" alt="Spotify"></div>
+                    <div class="alumni-card"><img src="logos/uber.svg" alt="Uber"></div>
+                    <div class="alumni-card"><img src="logos/meta.svg" alt="Meta"></div>
+                </div>
+                <div class="marquee-group">
+                    <div class="alumni-card"><img src="logos/accenture.svg" alt="Accenture"></div>
+                    <div class="alumni-card"><img src="logos/gpay.svg" alt="G Pay"></div>
+                    <div class="alumni-card"><img src="logos/zomato.svg" alt="Zomato"></div>
+                    <div class="alumni-card"><img src="logos/spotify.svg" alt="Spotify"></div>
+                    <div class="alumni-card"><img src="logos/uber.svg" alt="Uber"></div>
+                    <div class="alumni-card"><img src="logos/meta.svg" alt="Meta"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section container">
+        <div class="cert-header text-center">
+            <h2>We are Proudly Certified by</h2>
+            <p>We're thrilled to announce that COGNIZA has been certified for its outstanding educational offerings, assuring professionals and students of our commitment to excellence.</p>
+        </div>
+        <div class="cert-logos">
+            <!-- Ministry of Corporate Affairs -->
+            <div class="cert-logo">
+                <i class="fas fa-landmark" style="font-size: 3rem; color: #333;"></i>
+                <div class="cert-text">
+                    <span class="mca">MINISTRY OF<br>CORPORATE<br>AFFAIRS</span>
+                    <span class="govt">GOVERNMENT OF INDIA</span>
+                </div>
+            </div>
+            <!-- MSME Emblem -->
+            <div class="cert-logo" style="padding: 10px; display: flex; align-items: center; gap: 12px; border: none; background: transparent;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Government of India Emblem" style="height: 60px; width: auto; object-fit: contain;">
+                <span style="font-weight: 900; font-size: 1.8rem; color: #2C3E50; letter-spacing: 1px;">MSME</span>
+            </div>
+            <!-- ISO -->
+            <div class="cert-logo iso-logo" style="padding: 5px; border: none; background: transparent;">
+                <img src="logos/iso-badge.svg" alt="ISO 9001:2015 Certified" style="height: 65px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+            </div>
+            <!-- Startup India -->
+            <div class="cert-logo startup-india">
+                <i class="fas fa-rocket" style="font-size: 2.2rem; color: #FF9933;"></i>
+                <div class="cert-text">
+                    <span style="font-size: 1.4rem; font-weight: 900; font-style: italic; letter-spacing: -0.5px;">
+                        <span style="color: #FF9933;">#startup</span><span style="color: #138808;">india</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Approach Section -->
+    <section class="approach-section container">
+        <div class="approach-content">
+            <h2 class="approach-title">Unlock Your Career Potential with Our Proven Educational Approach</h2>
+            <p class="approach-desc">COGNIZA empowers learners with customized programs designed for diverse career paths. Our evolving curricula, expert mentorship, and engaging resources provide the skills and guidance you need to grow. At every stage, we support your journey toward career success.</p>
+        </div>
+        <div class="approach-features">
+            <div class="feature-card">
+                <div class="feature-header">
+                    <div class="feature-icon"><i class="fas fa-shapes"></i></div>
+                    <h3>Continuous Innovation</h3>
+                </div>
+                <p>We remain at the forefront of educational innovation, constantly evolving our services to offer the latest in E-learning technology and methodologies, ensuring a cutting-edge learning experience.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-header">
+                    <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Tailored Curriculum</h3>
+                </div>
+                <p>We curate specialized learning paths, tailored to meet diverse educational needs, ensuring a comprehensive and enriching experience for all learners.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-header">
+                    <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Interactive Learning Tools</h3>
+                </div>
+                <p>Our platform incorporates state-of-the-art interactive tools, fostering engaging and immersive learning experiences that captivate and inspire.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-header">
+                    <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Expert Guidance</h3>
+                </div>
+                <p>Learners benefit from expert guidance and support, ensuring they navigate through courses with clarity and confidence, backed by our experienced educators.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section class="collaboration-section container">
+        <div class="collab-header">
+            <h2>Collaboration That Drives Career Growth</h2>
+            <p>At Cogniza, we believe in the power of collaboration. Our partnerships with skilled business partners foster innovation, create valuable career opportunities, and support long-term growth.</p>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee-track track-1">
+                <div class="marquee-group">
+                    <div class="collab-card"><img src="logos/Amity_University.png" alt="Amity University"></div>
+                    <div class="collab-card"><img src="logos/Ashoka_University.png" alt="Ashoka University"></div>
+                    <div class="collab-card"><img src="logos/Birla_Institute_of_Technology_and_Science,_Pilani.jfif" alt="BITS Pilani"></div>
+                    <div class="collab-card"><img src="logos/Chandigarh_University.png" alt="Chandigarh University"></div>
+                    <div class="collab-card"><img src="logos/Lovely_Professional_University.png" alt="LPU"></div>
+                    <div class="collab-card"><img src="logos/Manipal_Academy_of_Higher_Education.png" alt="Manipal Academy"></div>
+                </div>
+                <div class="marquee-group">
+                    <div class="collab-card"><img src="logos/Amity_University.png" alt="Amity University"></div>
+                    <div class="collab-card"><img src="logos/Ashoka_University.png" alt="Ashoka University"></div>
+                    <div class="collab-card"><img src="logos/Birla_Institute_of_Technology_and_Science,_Pilani.jfif" alt="BITS Pilani"></div>
+                    <div class="collab-card"><img src="logos/Chandigarh_University.png" alt="Chandigarh University"></div>
+                    <div class="collab-card"><img src="logos/Lovely_Professional_University.png" alt="LPU"></div>
+                    <div class="collab-card"><img src="logos/Manipal_Academy_of_Higher_Education.png" alt="Manipal Academy"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="marquee-container mt-3">
+            <div class="marquee-track track-2">
+                <div class="marquee-group">
+                    <div class="collab-card"><img src="logos/National_Institutes_of_Technology.jfif" alt="NIT"></div>
+                    <div class="collab-card"><img src="logos/O._P._Jindal_Global_University.png" alt="Jindal Global University"></div>
+                    <div class="collab-card"><img src="logos/Sharda_University.jfif" alt="Sharda University"></div>
+                    <div class="collab-card"><img src="logos/SRM_Institute_of_Science_and_Technology.png" alt="SRM Institute"></div>
+                    <div class="collab-card"><img src="logos/Symbiosis_International.png" alt="Symbiosis"></div>
+                    <div class="collab-card"><img src="logos/Vellore_Institute_of_Technology.jfif" alt="VIT"></div>
+                </div>
+                <div class="marquee-group">
+                    <div class="collab-card"><img src="logos/National_Institutes_of_Technology.jfif" alt="NIT"></div>
+                    <div class="collab-card"><img src="logos/O._P._Jindal_Global_University.png" alt="Jindal Global University"></div>
+                    <div class="collab-card"><img src="logos/Sharda_University.jfif" alt="Sharda University"></div>
+                    <div class="collab-card"><img src="logos/SRM_Institute_of_Science_and_Technology.png" alt="SRM Institute"></div>
+                    <div class="collab-card"><img src="logos/Symbiosis_International.png" alt="Symbiosis"></div>
+                    <div class="collab-card"><img src="logos/Vellore_Institute_of_Technology.jfif" alt="VIT"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Program Section -->
+    <section id="programs" class="trending-section container">
+        <div class="trending-header">
+            <h2>Our Trending Program</h2>
+            <p>Join our renowned Programs: the knowledge provided will surely be invaluable to you!</p>
+        </div>
+<div class="domains-grid">
+                        <!-- Program 1 -->
+            <div class="domain-card">
+                <div class="domain-image">
+                    <img src="images/programs/Android_App_Development.png" alt="Android App Development" loading="lazy">
+                </div>
+                <div class="domain-content">
+                    <h3>Android App Development</h3>
+                    <p class="card-desc">Build powerful, scalable Android applications from scratch.</p>
+                    
+                    <div class="card-tags">
+                        <span class="badge-tech">Tech</span>
+                        <span class="status-ongoing"><i class="fas fa-chart-bar"></i> ONGOING</span>
+                    </div>
+                    
+                    <div class="card-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 3-4 Months</span>
+                        <span class="popularity"><i class="far fa-thumbs-up"></i> Popular</span>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <a href="android-app-development.html" class="btn-explore" style="text-decoration:none; text-align:center; display:flex; align-items:center; justify-content:center;">Explore</a>
+                        <a href="register.html" class="btn-register" style="text-decoration: none;"><i class="fas fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="domain-card">
+                <div class="domain-image">
+                    <img src="images/programs/Finance.png" alt="Finance" loading="lazy">
+                </div>
+                <div class="domain-content">
+                    <h3>Finance</h3>
+                    <p class="card-desc">Master financial modeling, analysis, and strategic planning.</p>
+                    
+                    <div class="card-tags">
+                        <span class="badge-tech">Business</span>
+                        <span class="status-ongoing"><i class="fas fa-chart-bar"></i> ONGOING</span>
+                    </div>
+                    
+                    <div class="card-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 2-3 Months</span>
+                        <span class="popularity"><i class="far fa-thumbs-up"></i> Popular</span>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <a href="finance.html" class="btn-explore" style="text-decoration:none; text-align:center; display:flex; align-items:center; justify-content:center;">Explore</a>
+                        <a href="register.html" class="btn-register" style="text-decoration: none;"><i class="fas fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="domain-card">
+                <div class="domain-image">
+                    <img src="images/programs/Medical_Coding.png" alt="Medical Coding" loading="lazy">
+                </div>
+                <div class="domain-content">
+                    <h3>Medical Coding</h3>
+                    <p class="card-desc">Learn to convert healthcare diagnoses and procedures into universal medical alphanumeric codes.</p>
+                    
+                    <div class="card-tags">
+                        <span class="badge-tech">Medical</span>
+                        <span class="status-ongoing"><i class="fas fa-chart-bar"></i> ONGOING</span>
+                    </div>
+                    
+                    <div class="card-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 3-4 Months</span>
+                        <span class="popularity"><i class="far fa-thumbs-up"></i> Popular</span>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <a href="medical-coding.html" class="btn-explore" style="text-decoration:none; text-align:center; display:flex; align-items:center; justify-content:center;">Explore</a>
+                        <a href="register.html" class="btn-register" style="text-decoration: none;"><i class="fas fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="domain-card">
+                <div class="domain-image">
+                    <img src="images/programs/Petroleum_Engineering.png" alt="Petroleum Engineering" loading="lazy">
+                </div>
+                <div class="domain-content">
+                    <h3>Petroleum Engineering</h3>
+                    <p class="card-desc">Dive into the exploration, extraction, and production of oil and gas.</p>
+                    
+                    <div class="card-tags">
+                        <span class="badge-tech">Core</span>
+                        <span class="status-ongoing"><i class="fas fa-chart-bar"></i> ONGOING</span>
+                    </div>
+                    
+                    <div class="card-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 4-5 Months</span>
+                        <span class="popularity"><i class="far fa-thumbs-up"></i> Popular</span>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <a href="petroleum-engineering.html" class="btn-explore" style="text-decoration:none; text-align:center; display:flex; align-items:center; justify-content:center;">Explore</a>
+                        <a href="register.html" class="btn-register" style="text-decoration: none;"><i class="fas fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="projects.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 15px 40px; display: inline-block;">View All Programs &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Horizontal Journey Section -->
+    <section class="journey-section container" style="margin-top: 30px; margin-bottom: 80px;">
+        <div class="journey-header">
+            <h2>Start your Journey Today for a Better Tomorrow</h2>
+            <p>Embark on your path to a brighter future. Start your journey today, shaping a better tomorrow with endless possibilities.</p>
+        </div>
+        
+        <div class="expanding-cards-container">
+            <div class="expand-card active" style="background-image: url('images/journey/step1_register.jpg'); background-size: cover; background-position: center;">
+                <div class="ec-icon"><i class="fas fa-user-plus"></i></div>
+                <div class="ec-number">01</div>
+                <div class="ec-content">
+                    <h3>Register Yourself</h3>
+                    <p>Begin by signing up and creating your personalized profile. Our onboarding process ensures we tailor the perfect learning path precisely for your career goals.</p>
+                </div>
+            </div>
+            <div class="expand-card" style="background-image: url('images/journey/step2_training.jpg'); background-size: cover; background-position: center bottom;">
+                <div class="ec-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <div class="ec-number">02</div>
+                <div class="ec-content">
+                    <h3>Professional Training</h3>
+                    <p>Engage in industry-led modules. Learn cutting-edge concepts directly from senior experts who have years of hands-on experience in the corporate world.</p>
+                </div>
+            </div>
+            <div class="expand-card" style="background-image: url('images/journey/step3_projects.jpg'); background-size: cover; background-position: center bottom;">
+                <div class="ec-icon"><i class="fas fa-briefcase"></i></div>
+                <div class="ec-number">03</div>
+                <div class="ec-content">
+                    <h3>Projects</h3>
+                    <p>Apply your knowledge practically with real-world enterprise projects. Build a stunning portfolio that immediately proves your capabilities to recruiters.</p>
+                </div>
+            </div>
+            <div class="expand-card" style="background-image: url('images/journey/step4_certifications.jpg'); background-size: cover; background-position: center;">
+                <div class="ec-icon"><i class="fas fa-certificate"></i></div>
+                <div class="ec-number">04</div>
+                <div class="ec-content">
+                    <h3>Certifications</h3>
+                    <p>Earn verified certificates to validate your newly acquired skills. Our certifications are globally recognized and highly valued by top technology organizations.</p>
+                </div>
+            </div>
+            <div class="expand-card" style="background-image: url('images/journey/step5_skills.jpg'); background-size: cover; background-position: center;">
+                <div class="ec-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="ec-number">05</div>
+                <div class="ec-content">
+                    <h3>Skill Development</h3>
+                    <p>Sharpen your technical and soft skills through advanced training. We focus heavily on communication, leadership, and modern agile methodologies.</p>
+                </div>
+            </div>
+            <div class="expand-card" style="background-image: url('images/journey/step6_interview.jpg'); background-size: cover; background-position: center;">
+                <div class="ec-icon"><i class="fas fa-user-tie"></i></div>
+                <div class="ec-number">06</div>
+                <div class="ec-content">
+                    <h3>Mock Interview</h3>
+                    <p>Practice and perfect your interview techniques with mentors. Go through rigorous technical rounds and HR evaluations to eliminate any stage fright.</p>
+                </div>
+            </div>
+            <div class="expand-card" style="background-image: url('images/journey/step7_placement.jpg'); background-size: cover; background-position: center 20%;">
+                <div class="ec-icon"><i class="fas fa-rocket"></i></div>
+                <div class="ec-number">07</div>
+                <div class="ec-content">
+                    <h3>Placement</h3>
+                    <p>Get dedicated support to land your dream job in tech. Our dedicated placement cell actively connects you directly with top hiring partners across the globe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elite Packs Section -->
+    <section id="offers" class="elite-packs-section container">
+        <div class="elite-header">
+            <span class="elite-badge">✨ Exclusive Learning Bundles</span>
+            <h2>Explore Our <span style="color: #5a78ff;">Elite Packs</span></h2>
+            <p>Unlock premium learning experiences crafted for career growth, industry readiness, and future success.</p>
+        </div>
+        
+        <div class="packs-grid packs-grid-4">
+            <!-- Pack 1 -->
+            <div class="pack-card tech-starter">
+                <div class="pack-header">
+                    <span class="pack-badge">Management</span>
+                    <div class="pack-icon"><i class="fas fa-chart-line"></i></div>
+                </div>
+                <h3>CAREER PRO PACK</h3>
+                <div class="pack-price">7,999</div>
+                <p class="pack-desc"><strong>Who is it for?</strong><br>Choose any 3 Non-IT Domains.</p>
+                <ul class="pack-features">
+                    <li><i class="far fa-check-circle"></i> Choose any 3 Non-IT domains</li>
+                    <li><i class="far fa-check-circle"></i> Live Mentor-Led Sessions</li>
+                    <li><i class="far fa-check-circle"></i> Lifetime Access to Session Recordings</li>
+                    <li><i class="far fa-check-circle"></i> Resume Building & LinkedIn Profile Optimization</li>
+                    <li><i class="far fa-check-circle"></i> Placement Assistance</li>
+                    <li><i class="far fa-check-circle"></i> Industry Projects & Assessments</li>
+                    <li><i class="far fa-check-circle"></i> Internship Certificate</li>
+                </ul>
+                <a href="career-pro-pack.html" class="btn-pack" style="display:block; box-sizing:border-box; text-decoration:none; text-align:center;">Select Pack &rarr;</a>
+            </div>
+            
+            <!-- Pack 2 -->
+            <div class="pack-card mba-lite">
+                <div class="pack-header">
+                    <span class="pack-badge">Flexible</span>
+                    <div class="pack-icon"><i class="fas fa-layer-group"></i></div>
+                </div>
+                <h3>FLEXI PRO PACK</h3>
+                <div class="pack-price">8,999</div>
+                <p class="pack-desc"><strong>Who is it for?</strong><br>Choose any 3 Domains from IT & Non-IT.<br><span style="font-size: 0.8rem; color: #888;">(e.g. 2 IT + 1 Non-IT, or 1 IT + 2 Non-IT)</span></p>
+                <ul class="pack-features">
+                    <li><i class="far fa-check-circle"></i> Choose any 3 domains</li>
+                    <li><i class="far fa-check-circle"></i> Live Mentor-Led Sessions</li>
+                    <li><i class="far fa-check-circle"></i> Lifetime Access to Session Recordings</li>
+                    <li><i class="far fa-check-circle"></i> Resume Building & LinkedIn Profile Optimization</li>
+                    <li><i class="far fa-check-circle"></i> Placement Assistance</li>
+                    <li><i class="far fa-check-circle"></i> Industry Projects & Assessments</li>
+                    <li><i class="far fa-check-circle"></i> Internship Certificate</li>
+                </ul>
+                <a href="flexi-pro-pack.html" class="btn-pack" style="display:block; box-sizing:border-box; text-decoration:none; text-align:center;">Select Pack &rarr;</a>
+            </div>
+
+            <!-- Pack 3 -->
+            <div class="pack-card make-your-own">
+                <div class="pack-header">
+                    <span class="pack-badge">Tech</span>
+                    <div class="pack-icon"><i class="fas fa-laptop-code"></i></div>
+                </div>
+                <h3>TECH PRO PACK</h3>
+                <div class="pack-price">9,999</div>
+                <p class="pack-desc"><strong>Who is it for?</strong><br>Choose any 3 IT Domains.</p>
+                <ul class="pack-features">
+                    <li><i class="far fa-check-circle"></i> Choose any 3 IT domains</li>
+                    <li><i class="far fa-check-circle"></i> Live Mentor-Led Sessions</li>
+                    <li><i class="far fa-check-circle"></i> Lifetime Access to Session Recordings</li>
+                    <li><i class="far fa-check-circle"></i> Resume Building & LinkedIn Profile Optimization</li>
+                    <li><i class="far fa-check-circle"></i> Placement Assistance</li>
+                    <li><i class="far fa-check-circle"></i> Industry Projects & Assessments</li>
+                    <li><i class="far fa-check-circle"></i> Internship Certificate</li>
+                </ul>
+                <a href="tech-pro-pack.html" class="btn-pack" style="display:block; box-sizing:border-box; text-decoration:none; text-align:center;">Select Pack &rarr;</a>
+            </div>
+
+            <!-- Pack 4: Offline Programs -->
+            <div class="pack-card golden-pass">
+                <div class="pack-header">
+                    <span class="pack-badge">Offline</span>
+                    <div class="pack-icon"><i class="fas fa-map-marker-alt"></i></div>
+                </div>
+                <h3>OFFLINE PROGRAMS</h3>
+                <div class="pack-price">11,999+</div>
+                <p class="pack-desc"><strong>Who is it for?</strong><br>In-Person Intensive Training with Offline Internship.</p>
+                <ul class="pack-features">
+                    <li><i class="far fa-check-circle"></i> Offline Training</li>
+                    <li><i class="far fa-check-circle"></i> 4 Sessions Every Week</li>
+                    <li><i class="far fa-check-circle"></i> Dedicated Mentor Support</li>
+                    <li><i class="far fa-check-circle"></i> Offline Internship</li>
+                    <li><i class="far fa-check-circle"></i> Performance-Based Stipend</li>
+                    <li><i class="far fa-check-circle"></i> 100% Placement Assistance</li>
+                </ul>
+                <a href="offline-programs.html" class="btn-pack" style="display:block; box-sizing:border-box; text-decoration:none; text-align:center;">Explore &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stats Section (Modern Form) -->
+    <section id="stats" class="stats-section container">
+        <div class="stats-header" style="text-align: center;">
+            <h2>Success Stats</h2>
+            <p>Get to the heart of what it takes to succeed by digging into our varied courses, many hours of instruction, happy students, seasoned teachers, and solid networks of contacts at top employers. Get involved with our vibrant group!</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-book"></i></div>
+                <h3 class="stat-number" data-target="50">0</h3>
+                <p class="stat-label">Programs</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-history"></i></div>
+                <h3 class="stat-number" data-target="10000">0</h3>
+                <p class="stat-label">Hours</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
+                <h3 class="stat-number" data-target="50">0</h3>
+                <p class="stat-label">Mentors</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-handshake"></i></div>
+                <h3 class="stat-number" data-target="10000">0</h3>
+                <p class="stat-label">Recruiters</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+                <h3 class="stat-number" data-target="100000">0</h3>
+                <p class="stat-label">Students</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section container">
+        <div class="testi-header" style="text-align: center;">
+            <h2>Testimonials</h2>
+            <p>Students share their success journeys with us.</p>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Pranaav+B+V&background=0D8ABC&color=fff&size=60" alt="Pranaav B V" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Pranaav B V</h4>
+                        <span>Vellore Institute of Technology</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="color: #ccc;"></i>
+                </div>
+                <p class="testi-text">It was a good experience. The interactions both on and off class hours were what really impressed me. Be it any time of the day, both the teacher and the representative are present to clarify your doubts and help you however possible.</p>
+            </div>
+            
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Vaibhav+Gupta&background=6C7A89&color=fff&size=60" alt="Vaibhav Gupta" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Vaibhav Gupta</h4>
+                        <span>SSIPMT RAIPUR CSE</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="color: #ccc;"></i>
+                </div>
+                <p class="testi-text">I like to thank that I was offered exemplary quality training and I was constantly examining my own practice to improve our program overall training of good</p>
+            </div>
+            
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Kajal+Mishra&background=2C3E50&color=fff&size=60" alt="Kajal Mishra" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Kajal Mishra</h4>
+                        <span>Manav rachna University</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="color: #ccc;"></i>
+                </div>
+                <p class="testi-text">Overall, I found the program to be highly valuable and well-structured, and I appreciate the opportunity to have been a part of it. I am grateful for the mentorship provided throughout the internship.</p>
+            </div>
+            
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=8E44AD&color=fff&size=60" alt="Priya Sharma" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Priya Sharma</h4>
+                        <span>Delhi University</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testi-text">The Tech Pro Pack completely transformed my career path! The hands-on projects and 1-on-1 mentorship sessions were exactly what I needed to build my confidence in coding.</p>
+            </div>
+
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Rahul+Verma&background=E67E22&color=fff&size=60" alt="Rahul Verma" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Rahul Verma</h4>
+                        <span>NIT Trichy</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testi-text">Excellent curriculum! The instructors break down complex AI concepts into very simple terms. I highly recommend Cogniza for anyone looking to upskill quickly and effectively.</p>
+            </div>
+
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Sneha+Reddy&background=16A085&color=fff&size=60" alt="Sneha Reddy" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Sneha Reddy</h4>
+                        <span>Osmania University</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testi-text">The live AI chatbot is so helpful whenever I'm stuck on a bug! The entire platform is seamless, and the placement assistance helped me land my first tech internship.</p>
+            </div>
+            
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Arjun+Patel&background=34495E&color=fff&size=60" alt="Arjun Patel" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Arjun Patel</h4>
+                        <span>Gujarat University</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testi-text">Cogniza's Full Stack Web Development course is unmatched. The practical approach to teaching modern frameworks gave me the exact skills companies are actively hiring for right now.</p>
+            </div>
+
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Nisha+Desai&background=E74C3C&color=fff&size=60" alt="Nisha Desai" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Nisha Desai</h4>
+                        <span>Mumbai University</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testi-text">The Data Science modules were brilliant! The real-world datasets we worked on helped me build a strong portfolio. Highly recommend this platform to anyone serious about their career.</p>
+            </div>
+
+            <div class="testi-card">
+                <div class="testi-user">
+                    <img src="https://ui-avatars.com/api/?name=Rohan+Iyer&background=2980B9&color=fff&size=60" alt="Rohan Iyer" class="testi-avatar">
+                    <div class="testi-user-info">
+                        <h4>Rohan Iyer</h4>
+                        <span>SRM Institute</span>
+                    </div>
+                </div>
+                <div class="testi-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testi-text">What stands out about Cogniza is the community and mentor support. I was never left hanging with a doubt, and the career counseling sessions were incredibly insightful for my job hunt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-grid-split">
+            <!-- Left Panel -->
+            <div class="contact-left">
+                <h2>Connect Anytime, Anywhere</h2>
+                <p>Discover the future of learning with Cogniza. Contact us for inquiries, enrollment information, and personalized counseling. Our expert team is here to guide your education journey with advanced technology, career-focused training, and dedicated support.</p>
+                <div class="contact-img-wrapper" style="margin-top: 20px;">
+                    <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&w=800&q=80" alt="Customer Support Telephone" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 75%;">
+                </div>
+            </div>
+            
+            <!-- Right Form Panel -->
+            <div class="contact-right">
+                <h3 class="contact-form-title">Contact Us...</h3>
+                <form class="contact-form-minimal" action="https://docs.google.com/forms/d/e/1FAIpQLSdBzYuiHxyIk9MX_hJv5TOcFtJoqu0frGhT3s6MQICLxMb4mQ/formResponse" method="POST" target="hidden_iframe" onsubmit="formSubmitted=true; setTimeout(() => this.reset(), 500); alert('Thank you for contacting us! We will get back to you soon.');">
+                    <div class="input-row">
+                        <div class="input-group-min">
+                            <label for="name"><i class="far fa-user"></i> Full Name</label>
+                            <input type="text" name="entry.1146775173" id="name" placeholder="Your answer" required>
+                        </div>
+                        <div class="input-group-min">
+                            <label for="email"><i class="far fa-envelope"></i> Email Address</label>
+                            <input type="email" name="emailAddress" id="email" placeholder="Your answer" required>
+                        </div>
+                    </div>
+                    <div class="input-group-min">
+                        <label for="phone"><i class="fas fa-phone-alt" style="font-size:0.9em;"></i> Phone Number</label>
+                        <input type="text" name="entry.1794320805" id="phone" placeholder="Your answer" required>
+                    </div>
+                    <div class="input-group-min">
+                        <label for="query"><i class="far fa-envelope"></i> Query</label>
+                        <textarea name="entry.319460358" id="query" rows="4" placeholder="Your answer" required></textarea>
+                    </div>
+                    <div class="submit-btn-wrapper">
+                        <button type="submit" class="btn-outline-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-col brand-col">
+                    <div class="footer-logo">Cogniza</div>
+                    <p>Cogniza empowers students with skills, mentorship, and real-world learning.</p>
+                </div>
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy & Refund Policy</a></li>
+                        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <!-- Courses -->
+                <div class="footer-col">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="index.html#programs">Machine Learning With Python</a></li>
+                        <li><a href="index.html#programs">Web Development</a></li>
+                        <li><a href="index.html#programs">Artificial Intelligence</a></li>
+                        <li><a href="index.html#programs">Data Science</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Information -->
+                <div class="footer-col contact-col">
+                    <h4>Contact Information</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 8884456745</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>operations@cogniza.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Cogniza pvt Ltd, The Desk World, GR towers, Sector 6, HSR Layout, Bengaluru, Karnataka 560102</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/cogniza.in?utm_source=qr" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/cogniza-private-limited-b86410420?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/918884456745" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="footer-copyright">
+                    <p>Cogniza Edutech Private Limited &copy; 2026. All Rights Reserved.</p>
+                </div>
+                <div class="footer-managed">
+                    <p>Managed by Cogniza Tech.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Floating AI Button -->
+    <a href="#" class="floating-ai-btn" id="aiBtn" title="Ask AI Assistant">
+        <i class="fas fa-comment-dots"></i>
+        </a>
+
+    <!-- AI Chat Widget -->
+    <div class="ai-chat-widget" id="aiChatWidget">
+        <div class="ai-chat-header">
+            <div class="ai-chat-title">
+                <i class="fas fa-comment-dots"></i> AI Assistant
+            </div>
+            <div class="ai-chat-actions">
+                <button id="aiCloseBtn" title="Close"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="ai-chat-messages" id="aiChatMessages">
+            <div class="ai-message ai">
+                <div class="msg-avatar"><i class="fas fa-comment-dots"></i></div>
+                <div class="msg-bubble">Hello! I'm your Cogniza AI assistant. How can I help you shape your career today?</div>
+            </div>
+        </div>
+
+        <div class="ai-chat-input-area">
+            <textarea id="aiChatInput" placeholder="Type your message..." rows="1"></textarea>
+            <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
