@@ -177,15 +177,7 @@
                     </ul>
                 </div>
                 <!-- Courses -->
-                <div class="footer-col">
-                    <h4>Courses</h4>
-                    <ul>
-                        <li><a href="#">Machine Learning With Python</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Artificial Intelligence</a></li>
-                        <li><a href="#">Data Science</a></li>
-                    </ul>
-                </div>
+                <div class="footer-col"><h4>Courses</h4><ul id="footer-course-list" style="list-style:none;padding:0;margin:0;"><li id="fc-slot-1" class="fc-slot"></li><li id="fc-slot-2" class="fc-slot"></li><li id="fc-slot-3" class="fc-slot"></li><li id="fc-slot-4" class="fc-slot"></li></ul><style>.fc-slot{padding:2px 0;font-size:.87rem;line-height:1.4;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}.fc-slot a{color:rgba(255,255,255,.7);text-decoration:none;}.fc-slot a:hover{color:#fff;}</style></div>
                 <!-- Contact Information -->
                 <div class="footer-col contact-col">
                     <h4>Contact Information</h4>
@@ -248,8 +240,34 @@
         </div>
     </div>
     <script src="script.js"></script>
+<script>(function(){var c=["Machine Learning With Python","Web Development","Artificial Intelligence","Data Science","Full Stack Web Development","Cyber Security & Ethical Hacking","Cloud Computing","Android App Development","Digital Marketing","UI/UX Design","Data Analytics","Blockchain Technology","DevOps","Business Analytics","Robotics","Embedded Systems","Stock Market","Medical Coding","Graphic Designing","Programming in Python"];var slots=[document.getElementById("fc-slot-1"),document.getElementById("fc-slot-2"),document.getElementById("fc-slot-3"),document.getElementById("fc-slot-4")];if(!slots[0])return;var off=0,ptr=0;slots.forEach(function(s,i){s.innerHTML='<a href="index.html#programs">' + c[i] + '</a>';off=i+1;});off=off%c.length;setInterval(function(){var s=slots[ptr];s.style.cssText="opacity:0;transform:translateY(-7px);transition:opacity .28s ease,transform .28s ease;";setTimeout(function(){s.innerHTML='<a href="index.html#programs">' + c[off] + '</a>';s.style.cssText="opacity:0;transform:translateY(7px);transition:none;";requestAnimationFrame(function(){requestAnimationFrame(function(){s.style.cssText="opacity:1;transform:translateY(0);transition:opacity .32s ease,transform .32s ease;";});});off=(off+1)%c.length;ptr=(ptr+1)%slots.length;},290);},1600);})();</script>
+<script>
+(function(){
+  var c=["Machine Learning With Python","Web Development","Artificial Intelligence","Data Science","Full Stack Web Development","Cyber Security & Ethical Hacking","Cloud Computing","Android App Development","Digital Marketing","UI/UX Design","Data Analytics","Blockchain Technology","DevOps","Business Analytics","Robotics","Embedded Systems","Stock Market","Medical Coding","Graphic Designing","Programming in Python"];
+  var s=[document.getElementById("fc-slot-1"),document.getElementById("fc-slot-2"),document.getElementById("fc-slot-3"),document.getElementById("fc-slot-4")];
+  if(!s[0])return;
+  var o=4,p=0;
+  s.forEach(function(x,i){x.innerHTML='<a href="index.html#programs">'+c[i]+'</a>';});
+  o=o%c.length;
+  setInterval(function(){
+    var x=s[p];
+    x.style.cssText="opacity:0;transform:translateY(-7px);transition:opacity .28s ease,transform .28s ease;";
+    setTimeout(function(){
+      x.innerHTML='<a href="index.html#programs">'+c[o]+'</a>';
+      x.style.cssText="opacity:0;transform:translateY(7px);transition:none;";
+      requestAnimationFrame(function(){requestAnimationFrame(function(){
+        x.style.cssText="opacity:1;transform:translateY(0);transition:opacity .32s ease,transform .32s ease;";
+      });});
+      o=(o+1)%c.length;
+      p=(p+1)%s.length;
+    },290);
+  },1600);
+})();
+</script>
 </body>
 </html>
+
+
 
 
 
