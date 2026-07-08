@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - COGNIZA</title>
+    <title>About Us</title>
     <link rel="icon" href="logos/favicon.svg" type="image/svg+xml">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -59,180 +59,183 @@
             line-height: 1.7;
         }
 
-        /* Single-column card list */
+        /* Single-column card list - Wide layout matching image */
         .ldr-grid {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            max-width: 620px;
+            gap: 40px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        /* Individual card - matching site's clean aesthetic */
+        /* Individual card */
         .ldr-card {
             position: relative;
-            background: #f8f9ff;
-            border: 1px solid #ebedf7;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border-radius: 16px;
-            padding: 16px;
+            background: linear-gradient(135deg, #f4f7fb 0%, #fdfdff 100%);
+            border: 1px solid #eef1f6;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            border-radius: 24px;
+            padding: 24px;
             display: flex;
-            align-items: center;
-            gap: 24px;
-            cursor: pointer;
+            align-items: stretch;
+            gap: 32px;
             overflow: hidden;
-            /* Start hidden for scroll animation */
             opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
-                        transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
-                        box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-        }
-        
-        /* Glassy Shine Animation Effect */
-        .ldr-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            z-index: 5;
-            pointer-events: none;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
         }
         
         .ldr-card:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-            border-color: #dbe0f2;
-            transform: translateY(-4px) translateX(0);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            transform: translateY(0);
         }
         
-        .ldr-card:hover::before {
-            animation: glassySweep 0.8s ease-in-out forwards;
+        /* Alternate left/right layout */
+        .ldr-card:nth-child(even) {
+            flex-direction: row-reverse;
         }
         
-        @keyframes glassySweep {
-            0% { left: -150%; }
-            100% { left: 200%; }
-        }
+
+        
         .ldr-card.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
         }
 
-        /* Neatly framed portrait photo */
+        /* Large Photo */
         .ldr-photo {
-            width: 150px;
-            height: 170px;
-            border-radius: 12px;
+            width: 320px;
+            height: 360px;
+            border-radius: 16px;
             object-fit: cover;
             object-position: center top;
             flex-shrink: 0;
-            transition: transform 0.5s ease;
         }
-        .ldr-card:hover .ldr-photo { transform: scale(1.03); }
 
-        /* Arrow — top-right */
-        .ldr-arrow {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid #e2e5f1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #130f26;
-            font-size: 0.65rem;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.2s, color 0.3s, border-color 0.3s;
-            z-index: 3;
-        }
-        .ldr-arrow:hover { 
-            background: var(--primary-color);
-            color: #fff; 
-            border-color: transparent;
-            transform: translate(2px,-2px); 
-        }
-        .ldr-arrow.no-link { pointer-events: none; opacity: 0.4; }
-
-        /* Text info — flows naturally */
+        /* Info Container */
         .ldr-info {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-right: 32px; /* space for arrow */
+            padding: 10px 0;
         }
 
+        /* Pill Badge */
+        .ldr-badge {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            align-self: flex-start;
+            margin-bottom: 24px;
+        }
+
+        /* Name */
         .ldr-name {
-            font-size: 1.05rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            color: #130f26;
-            margin: 0 0 3px;
-            line-height: 1.2;
+            color: #000;
+            margin: 0 0 10px 0;
         }
-        .ldr-role {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 0 0 8px;
+
+        /* Blue Gradient Divider */
+        .ldr-divider {
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, #1a73e8, #8b5cf6);
+            border-radius: 2px;
+            margin-bottom: 24px;
         }
+
+        /* Bio Text */
         .ldr-bio {
-            font-size: 0.72rem;
-            color: #555;
-            line-height: 1.5;
-            margin: 0 0 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 32px 0;
         }
-        .ldr-socials {
+
+        /* Profile Block Bottom */
+        .ldr-profile-block {
             display: flex;
-            gap: 8px;
             align-items: center;
+            gap: 16px;
+            margin-top: auto;
         }
-        .ldr-socials a {
-            width: 24px;
-            height: 24px;
-            border-radius: 5px;
-            background: #ffffff;
-            border: 1px solid #e2e5f1;
+        
+        .ldr-profile-icon {
+            width: 48px;
+            height: 48px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #130f26;
-            font-size: 0.65rem;
-            text-decoration: none;
-            transition: background 0.3s, color 0.3s, transform 0.2s, border-color 0.3s;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
-        .ldr-socials a:hover {
-            background: var(--primary-color);
-            border-color: transparent;
-            color: #fff;
-            transform: translateY(-2px);
+        
+        .ldr-profile-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ldr-profile-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .ldr-profile-role {
+            font-size: 0.8rem;
+            color: #64748b;
         }
 
+        /* Arrow Link */
+        .ldr-arrow {
+            margin-left: auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e293b;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+        .ldr-arrow:hover { 
+            background: #f8fafc;
+            transform: translate(2px,-2px); 
+        }
+        .ldr-arrow.no-link { pointer-events: none; opacity: 0.4; }
+
         /* ── Mobile responsive ── */
-        @media (max-width: 560px) {
-            .ldr-card {
+        @media (max-width: 768px) {
+            .ldr-card, .ldr-card:nth-child(even) {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 16px;
+                gap: 20px;
                 padding: 20px;
             }
             .ldr-photo {
                 width: 100%;
-                height: 240px;
+                height: 300px;
             }
-            .ldr-info {
-                padding-right: 0;
+            .ldr-name {
+                font-size: 1.8rem;
+            }
+            .ldr-profile-block {
+                width: 100%;
             }
         }
 
@@ -342,21 +345,27 @@
                     <p>The passionate visionaries behind Cogniza &mdash; united by a single mission: to transform lives through world-class education.</p>
                 </div>
 
-                <!-- Dark Portrait Cards Grid -->
+                <!-- Large Layout Cards Grid -->
                 <div class="ldr-grid">
 
                     <!-- Veena Kumanan -->
                     <div class="ldr-card">
                         <img class="ldr-photo" src="images/managing-director.jpeg" alt="Veena Kumanan">
-                        <a class="ldr-arrow" href="https://www.linkedin.com/in/veena-murugesh-7b4145402/" target="_blank" rel="noopener" title="LinkedIn">
-                            <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i>
-                        </a>
                         <div class="ldr-info">
-                            <p class="ldr-name">Veena Kumanan</p>
-                            <p class="ldr-role">CEO &amp; Managing Director</p>
-                            <p class="ldr-bio">Visionary leader driving Cogniza's strategic growth and excellence in edtech across India.</p>
-                            <div class="ldr-socials">
-                                <a href="https://www.linkedin.com/in/veena-murugesh-7b4145402/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <span class="ldr-badge">Chief Executive Officer (CEO) &amp; Managing Director</span>
+                            <h4 class="ldr-name">Veena Kumanan</h4>
+                            <div class="ldr-divider"></div>
+                            <p class="ldr-bio">Veena Kumanan leads Cogniza with a vision to redefine learning through innovation, quality, and industry-driven education. She oversees the company’s strategic direction, fosters organizational growth, and ensures every initiative empowers students and professionals to achieve their career aspirations.</p>
+                            
+                            <div class="ldr-profile-block">
+                                <div class="ldr-profile-icon">V</div>
+                                <div class="ldr-profile-text">
+                                    <span class="ldr-profile-name">Veena Kumanan</span>
+                                    <span class="ldr-profile-role">CEO &amp; Managing Director</span>
+                                </div>
+                                <a class="ldr-arrow" href="https://www.linkedin.com/in/veena-murugesh-7b4145402/" target="_blank" rel="noopener" title="LinkedIn">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -364,13 +373,19 @@
                     <!-- Murugesan -->
                     <div class="ldr-card">
                         <img class="ldr-photo" src="images/ceo.jpeg" alt="Murugesan">
-                        <span class="ldr-arrow no-link"><i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i></span>
                         <div class="ldr-info">
-                            <p class="ldr-name">Murugesan</p>
-                            <p class="ldr-role">Founder &amp; Chairperson</p>
-                            <p class="ldr-bio">Pioneering skill-based education and bridging the gap between academia and industry.</p>
-                            <div class="ldr-socials">
-                                <span style="font-size:0.68rem;color:#999;font-style:italic;">—</span>
+                            <span class="ldr-badge">Chairperson &amp; Founder</span>
+                            <h4 class="ldr-name">Murugesan</h4>
+                            <div class="ldr-divider"></div>
+                            <p class="ldr-bio">Murugesan provides strategic leadership and long-term vision for Cogniza, guiding the organization toward sustainable growth and excellence. With a strong commitment to innovation, governance, and educational impact, he ensures Cogniza remains focused on creating meaningful opportunities and delivering lasting value to learners and partners.</p>
+                            
+                            <div class="ldr-profile-block">
+                                <div class="ldr-profile-icon">M</div>
+                                <div class="ldr-profile-text">
+                                    <span class="ldr-profile-name">Murugesan</span>
+                                    <span class="ldr-profile-role">Chairperson &amp; Founder</span>
+                                </div>
+                                <span class="ldr-arrow no-link"><i class="fas fa-arrow-up-right-from-square"></i></span>
                             </div>
                         </div>
                     </div>
@@ -378,15 +393,22 @@
                     <!-- Logesh Kannaa -->
                     <div class="ldr-card">
                         <img class="ldr-photo" src="images/cso.jpeg" alt="Logesh Kannaa">
-                        <a class="ldr-arrow" href="https://www.linkedin.com/in/logesh-kannaa-a89738305" target="_blank" rel="noopener" title="LinkedIn">
-                            <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i>
-                        </a>
                         <div class="ldr-info">
-                            <p class="ldr-name">Logesh Kannaa</p>
-                            <p class="ldr-role">Chief Sales Officer</p>
-                            <p class="ldr-bio">Driving Cogniza's sales strategy and expanding partnerships for world-class learning.</p>
-                            <div class="ldr-socials">
-                                <a href="https://www.linkedin.com/in/logesh-kannaa-a89738305" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <span class="ldr-badge">Chief Sales Officer</span>
+                            <h4 class="ldr-name">Logesh Kannaa</h4>
+                            <div class="ldr-divider"></div>
+                            <p class="ldr-bio">Logesh Kannaa leads Cogniza’s sales strategy, business development, and institutional partnerships. With a strong focus on building meaningful relationships and driving sustainable growth, he is committed to expanding Cogniza’s reach across colleges, universities, and industry partners. His vision is to create impactful learning opportunities that bridge the gap between education and employability.
+</p>
+                            
+                            <div class="ldr-profile-block">
+                                <div class="ldr-profile-icon">L</div>
+                                <div class="ldr-profile-text">
+                                    <span class="ldr-profile-name">Logesh Kannaa</span>
+                                    <span class="ldr-profile-role">Chief Sales Officer</span>
+                                </div>
+                                <a class="ldr-arrow" href="https://www.linkedin.com/in/logesh-kannaa-a89738305" target="_blank" rel="noopener" title="LinkedIn">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -394,15 +416,21 @@
                     <!-- Mohammed Wasim -->
                     <div class="ldr-card">
                         <img class="ldr-photo" src="images/cmo.jpeg" alt="Mohammed Wasim">
-                        <a class="ldr-arrow" href="https://www.linkedin.com/in/mohammed-wasim-5337ab1b1" target="_blank" rel="noopener" title="LinkedIn">
-                            <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i>
-                        </a>
                         <div class="ldr-info">
-                            <p class="ldr-name">Mohammed Wasim</p>
-                            <p class="ldr-role">Chief Marketing Officer</p>
-                            <p class="ldr-bio">Leading Cogniza's marketing vision connecting students to the right career-oriented opportunities.</p>
-                            <div class="ldr-socials">
-                                <a href="https://www.linkedin.com/in/mohammed-wasim-5337ab1b1" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <span class="ldr-badge">Chief Marketing Officer</span>
+                            <h4 class="ldr-name">Mohammed Wasim</h4>
+                            <div class="ldr-divider"></div>
+                            <p class="ldr-bio">Mohammed Wasim heads Cogniza’s marketing and brand strategy, ensuring that every initiative resonates with students, institutions, and corporate partners. From digital campaigns to brand positioning and market expansion, he focuses on creating meaningful engagement and increasing Cogniza’s impact across the education ecosystem.</p>
+                            
+                            <div class="ldr-profile-block">
+                                <div class="ldr-profile-icon">M</div>
+                                <div class="ldr-profile-text">
+                                    <span class="ldr-profile-name">Mohammed Wasim</span>
+                                    <span class="ldr-profile-role">Chief Marketing Officer</span>
+                                </div>
+                                <a class="ldr-arrow" href="https://www.linkedin.com/in/mohammed-wasim-5337ab1b1" target="_blank" rel="noopener" title="LinkedIn">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
