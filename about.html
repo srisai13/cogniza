@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,11 +16,7 @@
             .about-hero-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
             .impact-grid { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
             .mission-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
-            .ldr-grid { gap: 12px !important; }
-            .ldr-card { height: 150px !important; }
-        }
-        @media (max-width: 560px) {
-            .ldr-card { height: 130px !important; }
+            .ldr-grid { gap: 24px !important; }
         }
 
         /* ===== DARK PORTRAIT CARD TEAM ===== */
@@ -224,18 +220,212 @@
             .ldr-card, .ldr-card:nth-child(even) {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 20px;
-                padding: 20px;
+                gap: 16px;
+                padding: 18px;
+                height: auto !important;
             }
             .ldr-photo {
                 width: 100%;
-                height: 300px;
+                height: 260px;
+                border-radius: 12px;
             }
             .ldr-name {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+            }
+            .ldr-badge {
+                font-size: 0.78rem;
+                padding: 6px 12px;
+                margin-bottom: 14px;
+                white-space: normal;
+            }
+            .ldr-bio {
+                font-size: 0.92rem;
+                margin-bottom: 20px;
             }
             .ldr-profile-block {
                 width: 100%;
+            }
+            .ldr-divider {
+                margin-bottom: 14px;
+            }
+        }
+
+        /* ── Very small phones ── */
+        @media (max-width: 480px) {
+            .ldr-card, .ldr-card:nth-child(even) {
+                padding: 14px;
+                gap: 12px;
+                border-radius: 16px;
+                height: auto !important;
+            }
+            .ldr-photo {
+                height: 210px;
+                border-radius: 10px;
+            }
+            .ldr-name {
+                font-size: 1.35rem;
+            }
+            .ldr-badge {
+                font-size: 0.72rem;
+                padding: 5px 10px;
+                margin-bottom: 10px;
+            }
+            .ldr-bio {
+                font-size: 0.88rem;
+                line-height: 1.55;
+                margin-bottom: 16px;
+            }
+            .ldr-profile-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                border-radius: 10px;
+            }
+            .ldr-profile-name {
+                font-size: 0.85rem;
+            }
+            .ldr-profile-role {
+                font-size: 0.72rem;
+            }
+            .ldr-arrow {
+                width: 34px;
+                height: 34px;
+                font-size: 0.75rem;
+            }
+            .leadership-section-header h3 {
+                font-size: 1.8rem;
+            }
+            .leadership-section-header p {
+                font-size: 0.92rem;
+            }
+        }
+
+        /* ══════════════════════════════════════════
+           iOS Safari specific fixes
+           @supports (-webkit-touch-callout: none)
+           targets ONLY iOS Safari — not Android, not desktop
+           ══════════════════════════════════════════ */
+        @supports (-webkit-touch-callout: none) {
+
+            /* 1. Fix: flex `gap` unsupported in iOS Safari < 14.5
+               Use margin-based fallback on grid items */
+            .ldr-grid {
+                gap: 0;
+            }
+            .ldr-card {
+                margin-bottom: 24px;
+            }
+            .ldr-card:last-child {
+                margin-bottom: 0;
+            }
+
+            /* 2. Fix: object-fit + object-position on <img> needs explicit
+               dimensions and display:block to avoid collapsed height on iOS */
+            .ldr-photo {
+                display: block;
+                width: 320px;
+                height: 360px;
+                -webkit-object-fit: cover;
+                object-fit: cover;
+                -webkit-object-position: center top;
+                object-position: center top;
+                flex-shrink: 0;
+            }
+
+            /* 3. Fix: overflow:hidden + border-radius clipping bug on iOS Safari.
+               Adding -webkit-mask-image forces a new compositing layer,
+               which correctly clips the image corners on iOS. */
+            .ldr-card {
+                -webkit-mask-image: -webkit-radial-gradient(white, black);
+            }
+
+            /* 4. Fix: translate3d forces GPU compositing, making
+               the card entrance animation smooth on iOS (no jank) */
+            .ldr-card {
+                -webkit-transform: translateY(30px);
+                transform: translateY(30px);
+                -webkit-transition: opacity 0.6s ease, -webkit-transform 0.6s ease, box-shadow 0.3s ease;
+                transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+            }
+            .ldr-card.visible {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            /* 5. Fix: -webkit-background-clip:text gradient on section header
+               already present, but ensure background-clip is also set */
+            .leadership-section-header h3 {
+                background-clip: text;
+            }
+
+            /* ── iOS Mobile overrides (portrait phones) ── */
+            @media (max-width: 768px) {
+                .ldr-card, .ldr-card:nth-child(even) {
+                    /* Reset row-reverse for iOS which can misalign flex children */
+                    -webkit-flex-direction: column;
+                    flex-direction: column;
+                    -webkit-align-items: flex-start;
+                    align-items: flex-start;
+                    height: auto !important;
+                    min-height: 0;
+                    /* Reset gap — use margin fallback */
+                    gap: 0;
+                    margin-bottom: 20px;
+                }
+                /* Space children via margin since gap is unreliable on older iOS */
+                .ldr-photo {
+                    width: 100%;
+                    /* Use max-width to prevent stretching on iPads in portrait */
+                    max-width: 100%;
+                    height: 260px;
+                    border-radius: 12px;
+                    margin-bottom: 16px;
+                    /* Explicit block prevents inline-block gap on iOS */
+                    display: block;
+                }
+                .ldr-info {
+                    width: 100%;
+                    /* Prevent flex shrink collapsing content on iOS */
+                    -webkit-flex-shrink: 0;
+                    flex-shrink: 0;
+                    padding: 0;
+                }
+                .ldr-badge {
+                    /* Prevent iOS from inflating tap target weirdly */
+                    display: inline-block;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                    margin-bottom: 12px;
+                    white-space: normal;
+                    word-break: break-word;
+                }
+                .ldr-profile-block {
+                    width: 100%;
+                    -webkit-flex-wrap: nowrap;
+                    flex-wrap: nowrap;
+                }
+                /* Safe-area padding for iPhone notch / Dynamic Island / home bar */
+                .ldr-grid {
+                    padding-left: env(safe-area-inset-left);
+                    padding-right: env(safe-area-inset-right);
+                }
+            }
+
+            /* ── iOS very small screens (SE, mini) ── */
+            @media (max-width: 390px) {
+                .ldr-photo {
+                    height: 200px;
+                }
+                .ldr-name {
+                    font-size: 1.25rem;
+                }
+                .ldr-badge {
+                    font-size: 0.7rem;
+                    padding: 5px 10px;
+                }
+                .ldr-bio {
+                    font-size: 0.86rem;
+                }
             }
         }
 

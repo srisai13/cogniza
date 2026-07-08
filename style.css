@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --primary-color: #9d00ff; /* Vibrant Purple from C logo */
     --secondary-color: #0084ff; /* Cyan-blue from C logo */
     --dark-navy: #130f26; /* Deep indigo for strong contrast */
@@ -2763,12 +2763,16 @@ header {
         padding: 30px 15px;
     }
     .cert-logos {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 16px;
         align-items: center;
-        gap: 20px;
+        justify-items: center;
     }
     .cert-logo {
         text-align: center;
+        justify-content: center;
+        width: 100%;
     }
 
     /* ---- Trending Programs (Domains) ---- */
