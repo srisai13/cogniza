@@ -2579,7 +2579,20 @@ header {
     z-index: 3001;
 }
 
-@media (max-width: 1050px) {
+/* Explicitly keep hamburger hidden on laptop/desktop (>900px),
+   even when browser is zoomed in */
+@media (min-width: 901px) {
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    .top-bar .nav-container,
+    .top-bar .nav-actions {
+        display: flex !important;
+    }
+}
+
+
+@media (max-width: 900px) {
     .mobile-menu-btn {
         display: block;
     }
