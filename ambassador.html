@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,38 +9,283 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* ---- Ambassador Page: Mobile-only overrides ---- */
-        @media (max-width: 768px) {
-            .amb-highlights-grid {
-                grid-template-columns: 1fr !important;
-                gap: 15px !important;
-            }
-            .amb-who-grid {
-                grid-template-columns: 1fr !important;
-                gap: 20px !important;
-            }
-            .amb-perks-grid {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 15px !important;
-            }
-            .amb-main-container {
-                padding: 25px 15px !important;
-            }
-            .amb-hero h2 {
-                font-size: 1.8rem !important;
-            }
-            .amb-hero p {
-                font-size: 1rem !important;
-            }
+        /* ===== Page-level layout ===== */
+        .page-hero {
+            padding: 80px 20px 60px;
+            text-align: center;
         }
-        @media (max-width: 420px) {
-            .amb-perks-grid {
-                grid-template-columns: 1fr !important;
-            }
+        .page-hero .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e1ccff, #cce4ff);
+            color: #5a00d1;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .page-hero h2 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: #130f26;
+            margin: 0 0 20px;
+            line-height: 1.15;
+        }
+        .page-hero p {
+            font-size: 1.15rem;
+            color: #555;
+            max-width: 680px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .page-hero-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .page-hero-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== Section helpers ===== */
+        .section-band {
+            padding: 80px 0;
+        }
+        .section-band.grey {
+            background: #fafbfe;
+        }
+        .section-label {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-label h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #130f26;
+            margin: 0 0 12px;
+        }
+        .section-label p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ===== Highlights Grid ===== */
+        .amb-highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .highlight-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+        .highlight-item:hover { transform: translateY(-5px); }
+        .highlight-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 20px rgba(157,0,255,0.2);
+        }
+        .highlight-item h3 { font-size: 1.3rem; font-weight: 700; color: #130f26; margin-bottom: 12px; }
+        .highlight-item p { color: #666; line-height: 1.6; font-size: 0.95rem; margin: 0; }
+
+        /* ===== Who Can Apply & Responsibilities ===== */
+        .amb-who-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .amb-list-box {
+            background: #fafbfe;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #eef1f8;
+        }
+        .amb-list-box h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #130f26;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .amb-list-box h3 i {
+            color: var(--primary-color);
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .amb-list { list-style: none; padding: 0; margin: 0; }
+        .amb-list li {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.6;
+        }
+        .amb-list li i {
+            color: var(--secondary-color);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* ===== Perks Grid ===== */
+        .amb-perks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .perk-item {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .perk-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .perk-item i { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .perk-item h4 { font-weight: 700; color: #130f26; margin: 0 0 12px; font-size: 1.2rem; }
+        .perk-item p { font-size: 0.95rem; color: #666; margin: 0; line-height: 1.6; }
+
+        /* ===== How It Works Timeline ===== */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 38px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: #eef1f8;
+            z-index: 0;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .timeline-number {
+            width: 76px;
+            height: 76px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            flex-shrink: 0;
+            border: 6px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .timeline-content {
+            background: #fafbfe;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #eef1f8;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        .timeline-content:hover { transform: translateX(5px); }
+        .timeline-content h4 { font-size: 1.3rem; font-weight: 700; color: #130f26; margin: 0 0 10px; }
+        .timeline-content p { color: #555; font-size: 1rem; margin: 0; line-height: 1.6; }
+
+        /* ===== CTA Band ===== */
+        .cta-band {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        .cta-band h2 { font-size: 2.2rem; font-weight: 800; margin: 0 0 15px; }
+        .cta-band p { font-size: 1.1rem; opacity: 0.9; margin: 0 auto 35px; max-width: 600px; line-height: 1.6;}
+        .cta-band a {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cta-band a:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+
+
+        @media (max-width: 900px) {
+            .amb-highlights-grid, .amb-perks-grid { grid-template-columns: 1fr 1fr; }
+            .amb-who-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .page-hero { padding: 40px 15px 30px; }
+            .page-hero h2 { font-size: 1.8rem; }
+            .page-hero p { font-size: 1rem; margin-bottom: 25px; }
+            .section-band { padding: 50px 0; }
+            .section-label { margin-bottom: 30px; }
+            .section-label h2 { font-size: 1.6rem; }
+            .amb-list-box { padding: 25px; }
+            .amb-list-box h3 { font-size: 1.3rem; }
+            .amb-list li { font-size: 0.95rem; }
+            .perk-item { padding: 25px 18px; }
+            .perk-item h4 { font-size: 1.05rem; }
+            .timeline-number { width: 60px; height: 60px; font-size: 1.4rem; }
+            .timeline-content { padding: 20px; }
+            .timeline-content h4 { font-size: 1.1rem; }
+            .cta-band { padding: 50px 20px; }
+            .cta-band h2 { font-size: 1.6rem; }
+        }
+        @media (max-width: 600px) {
+            .amb-highlights-grid, .amb-perks-grid { grid-template-columns: 1fr; }
+            .timeline-item { flex-direction: column; gap: 15px; }
+            .timeline-line { left: 38px; top: 0; bottom: 0; display: none; }
+            .timeline-number { margin-left: auto; margin-right: auto; }
+            .timeline-content { text-align: center; }
         }
     </style>
 </head>
-<body style="background: #f4f5f9;">
+<body>
     <header>
         <div class="container top-bar">
             <div class="logo">
@@ -58,7 +303,7 @@
             <div class="nav-container">
                 <nav class="pill-nav">
                     <ul class="nav-links">
-                        <li><a href="index.html#home" >Home</a></li>
+                        <li><a href="index.html#home">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="index.html#programs">Programs</a></li>
                         <li><a href="index.html#offers">Offer Plans</a></li>
@@ -77,157 +322,151 @@
             <div class="nav-actions">
                 <a href="register.html" class="btn btn-outline">Register</a>
             </div>
+
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <main class="container" style="padding: 30px 20px 60px; max-width: 1000px; margin: 0 auto;">
-        <div style="background: white; border-radius: 12px; padding: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px;">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <span class="pack-badge" style="background: #e1ccff; color: #5a00d1; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Join Our Network</span>
-                <h2 style="font-size: 2.5rem; font-weight: 800; color: #130f26; margin-top: 15px; margin-bottom: 15px;">Become a <span class="text-gradient">Cogniza Campus Ambassador</span></h2>
-                <p style="font-size: 1.15rem; color: #555; max-width: 700px; margin: 0 auto; line-height: 1.6;">Represent Cogniza at your college, build your leadership skills, and earn exciting rewards while helping your peers discover top-tier tech training.</p>
-                <div style="margin-top: 30px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80" alt="Cogniza Campus Ambassador" style="width: 100%; height: auto; display: block;">
-                </div>
-            </div>
-            
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
-            
-            <div class="amb-highlights-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-bottom: 40px;">
-                <div style="text-align: center; padding: 20px;">
-                    <div style="display: inline-block; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; margin-left: auto; margin-right: auto;">
-                        <i class="fas fa-bullhorn" style="color: white; font-size: 1.5rem;"></i>
-                    </div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: #130f26; margin-bottom: 10px;">Lead & Inspire</h3>
-                    <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Be the voice of Cogniza on your campus and lead tech communities.</p>
-                </div>
-                <div style="text-align: center; padding: 20px;">
-                    <div style="display: inline-block; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; margin-left: auto; margin-right: auto;">
-                        <i class="fas fa-gift" style="color: white; font-size: 1.5rem;"></i>
-                    </div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: #130f26; margin-bottom: 10px;">Earn Rewards</h3>
-                    <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Get performance-based stipends, free courses, and exclusive swags.</p>
-                </div>
-                <div style="text-align: center; padding: 20px;">
-                    <div style="display: inline-block; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; margin-left: auto; margin-right: auto;">
-                        <i class="fas fa-certificate" style="color: white; font-size: 1.5rem;"></i>
-                    </div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: #130f26; margin-bottom: 10px;">Get Certified</h3>
-                    <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Receive an official Letter of Recommendation and experience certificate.</p>
-                </div>
-            </div>
-            
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
-
-            <div class="amb-who-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;">
-                <div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #130f26; margin-bottom: 20px;">Who Can Apply?</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-star" style="color: #9d00ff;"></i> <span style="color: #444; font-size: 1rem;">College students across any degree or branch.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-star" style="color: #9d00ff;"></i> <span style="color: #444; font-size: 1rem;">Active members of tech clubs or student communities.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-star" style="color: #9d00ff;"></i> <span style="color: #444; font-size: 1rem;">Individuals with great communication and leadership skills.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-star" style="color: #9d00ff;"></i> <span style="color: #444; font-size: 1rem;">Students passionate about organizing events and workshops.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #130f26; margin-bottom: 20px;">Your Responsibilities</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-tasks" style="color: #0084ff;"></i> <span style="color: #444; font-size: 1rem;">Promote Cogniza's programs on your campus.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-tasks" style="color: #0084ff;"></i> <span style="color: #444; font-size: 1rem;">Host seminars, tech talks, and coding competitions.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-tasks" style="color: #0084ff;"></i> <span style="color: #444; font-size: 1rem;">Connect students with our career counseling team.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-tasks" style="color: #0084ff;"></i> <span style="color: #444; font-size: 1rem;">Provide on-ground feedback to improve our services.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 50px;">
-                <h3 style="font-size: 1.8rem; font-weight: 700; color: #130f26; margin-bottom: 25px; text-align: center;">Perks & Benefits</h3>
-                <div class="amb-perks-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-                    <div style="background: white; padding: 30px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center;">
-                        <i class="fas fa-tshirt" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                        <h4 style="font-weight: 700; color: #130f26; margin-bottom: 10px;">Exclusive Swag</h4>
-                        <p style="font-size: 0.9rem; color: #666; margin: 0;">Get premium Cogniza t-shirts, hoodies, and welcome kits delivered to your door.</p>
-                    </div>
-                    <div style="background: white; padding: 30px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center;">
-                        <i class="fas fa-wallet" style="font-size: 2rem; color: var(--secondary-color); margin-bottom: 15px;"></i>
-                        <h4 style="font-weight: 700; color: #130f26; margin-bottom: 10px;">Performance Stipend</h4>
-                        <p style="font-size: 0.9rem; color: #666; margin: 0;">Earn generous financial incentives based on your impact and referral success.</p>
-                    </div>
-                    <div style="background: white; padding: 30px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center;">
-                        <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                        <h4 style="font-weight: 700; color: #130f26; margin-bottom: 10px;">VIP Networking</h4>
-                        <p style="font-size: 0.9rem; color: #666; margin: 0;">Connect directly with tech industry leaders and get priority placement assistance.</p>
-                    </div>
-                </div>
-            </div>
-
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 50px 0;">
-
-            <div style="margin-bottom: 50px;">
-                <h3 style="font-size: 1.8rem; font-weight: 700; color: #130f26; margin-bottom: 35px; text-align: center;">How It Works</h3>
-                
-                <div style="display: flex; flex-direction: column; gap: 25px; position: relative;">
-                    <!-- Vertical Line -->
-                    <div style="position: absolute; left: 35px; top: 20px; bottom: 20px; width: 2px; background: #e6e6e6; z-index: 0;"></div>
-                    
-                    <div style="display: flex; gap: 25px; align-items: flex-start; position: relative; z-index: 1;">
-                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: white; flex-shrink: 0; border: 4px solid #f8f9ff;">1</div>
-                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;">
-                            <h4 style="font-size: 1.2rem; font-weight: 700; color: #130f26; margin-bottom: 8px;">Apply Online</h4>
-                            <p style="color: #666; font-size: 0.95rem; margin: 0; line-height: 1.5;">Fill out our simple application form telling us about yourself, your college, and why you'd be a great fit.</p>
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; gap: 25px; align-items: flex-start; position: relative; z-index: 1;">
-                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: white; flex-shrink: 0; border: 4px solid #f8f9ff;">2</div>
-                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;">
-                            <h4 style="font-size: 1.2rem; font-weight: 700; color: #130f26; margin-bottom: 8px;">Quick Interview</h4>
-                            <p style="color: #666; font-size: 0.95rem; margin: 0; line-height: 1.5;">Hop on a 15-minute introductory call with our community manager to discuss your ideas and action plan.</p>
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; gap: 25px; align-items: flex-start; position: relative; z-index: 1;">
-                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: white; flex-shrink: 0; border: 4px solid #f8f9ff;">3</div>
-                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;">
-                            <h4 style="font-size: 1.2rem; font-weight: 700; color: #130f26; margin-bottom: 8px;">Onboarding & Swag</h4>
-                            <p style="color: #666; font-size: 0.95rem; margin: 0; line-height: 1.5;">Get officially selected, receive your welcome kit in the mail, and join our private ambassador Discord.</p>
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; gap: 25px; align-items: flex-start; position: relative; z-index: 1;">
-                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: white; flex-shrink: 0; border: 4px solid #f8f9ff;">4</div>
-                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%;">
-                            <h4 style="font-size: 1.2rem; font-weight: 700; color: #130f26; margin-bottom: 8px;">Lead & Earn</h4>
-                            <p style="color: #666; font-size: 0.95rem; margin: 0; line-height: 1.5;">Start hosting events, referring peers, and earning stipends based on your performance metrics.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="background: #f8f9ff; border-radius: 12px; padding: 40px; text-align: center;">
-                <h3 style="font-size: 1.5rem; font-weight: 700; color: #130f26; margin-bottom: 20px;">Ready to Step Up?</h3>
-                <p style="font-size: 1.05rem; color: #555; margin-bottom: 30px;">Applications are now open for the upcoming cohort. Apply now to kickstart your leadership journey with Cogniza!</p>
-                <a href="register.html" style="display: inline-block; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white; text-decoration: none; padding: 15px 40px; border-radius: 30px; font-weight: 600; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(157, 0, 255, 0.2); transition: transform 0.3s ease;">Apply Now</a>
-            </div>
-            
+    <!-- Hero Section -->
+    <section class="container page-hero">
+        <div class="badge">Join Our Network</div>
+        <h2>Become a <span class="text-gradient">Cogniza Campus Ambassador</span></h2>
+        <p>Represent Cogniza at your college, build your leadership skills, and earn exciting rewards while helping your peers discover top-tier tech training.</p>
+        <div class="page-hero-img">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80" alt="Cogniza Campus Ambassador">
         </div>
-    </main>
+    </section>
+
+    <!-- Highlights -->
+    <section class="section-band grey">
+        <div class="container">
+            <div class="amb-highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Lead & Inspire</h3>
+                    <p>Be the voice of Cogniza on your campus and lead tech communities.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-gift"></i></div>
+                    <h3>Earn Rewards</h3>
+                    <p>Get performance-based stipends, free courses, and exclusive swags.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Get Certified</h3>
+                    <p>Receive an official Letter of Recommendation and experience certificate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Can Apply & Responsibilities -->
+    <section class="section-band">
+        <div class="container">
+            <div class="amb-who-grid">
+                <div class="amb-list-box">
+                    <h3><i class="fas fa-user-check"></i> Who Can Apply?</h3>
+                    <ul class="amb-list">
+                        <li><i class="fas fa-star"></i> College students across any degree or branch.</li>
+                        <li><i class="fas fa-star"></i> Active members of tech clubs or student communities.</li>
+                        <li><i class="fas fa-star"></i> Individuals with great communication and leadership skills.</li>
+                        <li><i class="fas fa-star"></i> Students passionate about organizing events and workshops.</li>
+                    </ul>
+                </div>
+                <div class="amb-list-box">
+                    <h3><i class="fas fa-tasks"></i> Your Responsibilities</h3>
+                    <ul class="amb-list">
+                        <li><i class="fas fa-check-circle"></i> Promote Cogniza's programs on your campus.</li>
+                        <li><i class="fas fa-check-circle"></i> Host seminars, tech talks, and coding competitions.</li>
+                        <li><i class="fas fa-check-circle"></i> Connect students with our career counseling team.</li>
+                        <li><i class="fas fa-check-circle"></i> Provide on-ground feedback to improve our services.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perks & Benefits -->
+    <section class="section-band grey">
+        <div class="container">
+            <div class="section-label">
+                <h2>Perks & <span class="text-gradient">Benefits</span></h2>
+                <p>Enjoy exclusive benefits as you grow our community.</p>
+            </div>
+            <div class="amb-perks-grid">
+                <div class="perk-item">
+                    <i class="fas fa-tshirt" style="color: var(--primary-color);"></i>
+                    <h4>Exclusive Swag</h4>
+                    <p>Get premium Cogniza t-shirts, hoodies, and welcome kits delivered to your door.</p>
+                </div>
+                <div class="perk-item">
+                    <i class="fas fa-wallet" style="color: var(--secondary-color);"></i>
+                    <h4>Performance Stipend</h4>
+                    <p>Earn generous financial incentives based on your impact and referral success.</p>
+                </div>
+                <div class="perk-item">
+                    <i class="fas fa-network-wired" style="color: var(--primary-color);"></i>
+                    <h4>VIP Networking</h4>
+                    <p>Connect directly with tech industry leaders and get priority placement assistance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-band">
+        <div class="container">
+            <div class="section-label">
+                <h2>How It <span class="text-gradient">Works</span></h2>
+                <p>Your journey to becoming a Cogniza Campus Ambassador.</p>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Apply Online</h4>
+                        <p>Fill out our simple application form telling us about yourself, your college, and why you'd be a great fit.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Quick Interview</h4>
+                        <p>Hop on a 15-minute introductory call with our community manager to discuss your ideas and action plan.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Onboarding & Swag</h4>
+                        <p>Get officially selected, receive your welcome kit in the mail, and join our private ambassador Discord.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Lead & Earn</h4>
+                        <p>Start hosting events, referring peers, and earning stipends based on your performance metrics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="cta-band">
+        <h2>Ready to Step Up?</h2>
+        <p>Applications are now open for the upcoming cohort. Apply now to kickstart your leadership journey with Cogniza!</p>
+        <a href="register.html">Apply Now</a>
+    </section>
 
     <!-- Footer Section -->
     <footer class="site-footer">
@@ -283,10 +522,11 @@
             </div>
         </div>
     </footer>
+
     <!-- Floating AI Button -->
     <a href="#" class="floating-ai-btn" id="aiBtn" title="Ask AI Assistant">
         <i class="fas fa-comment-dots"></i>
-        </a>
+    </a>
 
     <!-- AI Chat Widget -->
     <div class="ai-chat-widget" id="aiChatWidget">
@@ -312,38 +552,28 @@
         </div>
     </div>
     <script src="script.js"></script>
-<script>(function(){var c=["Machine Learning With Python","Web Development","Artificial Intelligence","Data Science","Full Stack Web Development","Cyber Security & Ethical Hacking","Cloud Computing","Android App Development","Digital Marketing","UI/UX Design","Data Analytics","Blockchain Technology","DevOps","Business Analytics","Robotics","Embedded Systems","Stock Market","Medical Coding","Graphic Designing","Programming in Python"];var slots=[document.getElementById("fc-slot-1"),document.getElementById("fc-slot-2"),document.getElementById("fc-slot-3"),document.getElementById("fc-slot-4")];if(!slots[0])return;var off=0,ptr=0;slots.forEach(function(s,i){s.innerHTML='<a href="index.html#programs">' + c[i] + '</a>';off=i+1;});off=off%c.length;setInterval(function(){var s=slots[ptr];s.style.cssText="opacity:0;transform:translateY(-7px);transition:opacity .28s ease,transform .28s ease;";setTimeout(function(){s.innerHTML='<a href="index.html#programs">' + c[off] + '</a>';s.style.cssText="opacity:0;transform:translateY(7px);transition:none;";requestAnimationFrame(function(){requestAnimationFrame(function(){s.style.cssText="opacity:1;transform:translateY(0);transition:opacity .32s ease,transform .32s ease;";});});off=(off+1)%c.length;ptr=(ptr+1)%slots.length;},290);},1600);})();</script>
-<script>
-(function(){
-  var c=["Machine Learning With Python","Web Development","Artificial Intelligence","Data Science","Full Stack Web Development","Cyber Security & Ethical Hacking","Cloud Computing","Android App Development","Digital Marketing","UI/UX Design","Data Analytics","Blockchain Technology","DevOps","Business Analytics","Robotics","Embedded Systems","Stock Market","Medical Coding","Graphic Designing","Programming in Python"];
-  var s=[document.getElementById("fc-slot-1"),document.getElementById("fc-slot-2"),document.getElementById("fc-slot-3"),document.getElementById("fc-slot-4")];
-  if(!s[0])return;
-  var o=4,p=0;
-  s.forEach(function(x,i){x.innerHTML='<a href="index.html#programs">'+c[i]+'</a>';});
-  o=o%c.length;
-  setInterval(function(){
-    var x=s[p];
-    x.style.cssText="opacity:0;transform:translateY(-7px);transition:opacity .28s ease,transform .28s ease;";
-    setTimeout(function(){
-      x.innerHTML='<a href="index.html#programs">'+c[o]+'</a>';
-      x.style.cssText="opacity:0;transform:translateY(7px);transition:none;";
-      requestAnimationFrame(function(){requestAnimationFrame(function(){
-        x.style.cssText="opacity:1;transform:translateY(0);transition:opacity .32s ease,transform .32s ease;";
-      });});
-      o=(o+1)%c.length;
-      p=(p+1)%s.length;
-    },290);
-  },1600);
-})();
-</script>
+    <script>
+    (function(){
+      var c=["Machine Learning With Python","Web Development","Artificial Intelligence","Data Science","Full Stack Web Development","Cyber Security & Ethical Hacking","Cloud Computing","Android App Development","Digital Marketing","UI/UX Design","Data Analytics","Blockchain Technology","DevOps","Business Analytics","Robotics","Embedded Systems","Stock Market","Medical Coding","Graphic Designing","Programming in Python"];
+      var s=[document.getElementById("fc-slot-1"),document.getElementById("fc-slot-2"),document.getElementById("fc-slot-3"),document.getElementById("fc-slot-4")];
+      if(!s[0])return;
+      var o=4,p=0;
+      s.forEach(function(x,i){x.innerHTML='<a href="index.html#programs">'+c[i]+'</a>';});
+      o=o%c.length;
+      setInterval(function(){
+        var x=s[p];
+        x.style.cssText="opacity:0;transform:translateY(-7px);transition:opacity .28s ease,transform .28s ease;";
+        setTimeout(function(){
+          x.innerHTML='<a href="index.html#programs">'+c[o]+'</a>';
+          x.style.cssText="opacity:0;transform:translateY(7px);transition:none;";
+          requestAnimationFrame(function(){requestAnimationFrame(function(){
+            x.style.cssText="opacity:1;transform:translateY(0);transition:opacity .32s ease,transform .32s ease;";
+          });});
+          o=(o+1)%c.length;
+          p=(p+1)%s.length;
+        },290);
+      },1600);
+    })();
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
