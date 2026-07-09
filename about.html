@@ -303,8 +303,10 @@
             box-shadow: 0 25px 50px rgba(26, 115, 232, 0.12);
         }
         .ldr-row:nth-child(even) { flex-direction: row-reverse; }
-        .ldr-photo { width: 450px; height: 350px; border-radius: 35px; object-fit: cover; object-position: center top; flex-shrink: 0; box-shadow: 0 20px 40px rgba(0,0,0,0.12); transition: box-shadow 0.4s ease, transform 0.4s ease; }
-        .ldr-row:hover .ldr-photo { transform: scale(1.03); box-shadow: 0 25px 50px rgba(0,0,0,0.18); }
+        .ldr-photo-wrapper { width: 450px; height: 350px; border-radius: 35px; flex-shrink: 0; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.12); transition: box-shadow 0.4s ease; }
+        .ldr-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.4s ease; display: block; }
+        .ldr-row:hover .ldr-photo-wrapper { box-shadow: 0 25px 50px rgba(0,0,0,0.18); }
+        .ldr-photo-wrapper:hover .ldr-photo { transform: scale(1.05); }
         .ldr-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; text-align: left; }
         .ldr-badge { background: #e8f0fe; color: #1a73e8; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-block; align-self: flex-start; margin-bottom: 20px; }
         .ldr-name { font-size: 2.2rem; font-weight: 800; color: #000; margin: 0 0 15px 0; }
@@ -471,7 +473,9 @@
 
                 <!-- Veena Kumanan -->
                 <div class="ldr-row">
-                    <img class="ldr-photo" src="images/Veena Kumanan.jpeg" alt="Veena Kumanan">
+                    <div class="ldr-photo-wrapper">
+                        <img class="ldr-photo" src="images/Veena Kumanan.jpeg" alt="Veena Kumanan">
+                    </div>
                     <div class="ldr-info">
                         <span class="ldr-badge">Chief Executive Officer (CEO) &amp; Managing Director</span>
                         <h4 class="ldr-name">Veena Kumanan</h4>
@@ -491,7 +495,9 @@
 
                 <!-- Murugesan -->
                 <div class="ldr-row">
-                    <img class="ldr-photo" src="images/Murugesan.jpeg" alt="Murugesan">
+                    <div class="ldr-photo-wrapper">
+                        <img class="ldr-photo" src="images/Murugesan.jpeg" alt="Murugesan">
+                    </div>
                     <div class="ldr-info">
                         <span class="ldr-badge">Chairperson &amp; Founder</span>
                         <h4 class="ldr-name">Murugesan</h4>
@@ -509,7 +515,9 @@
 
                 <!-- Logesh Kannaa -->
                 <div class="ldr-row">
-                    <img class="ldr-photo" src="images/lokesh.jpeg" alt="Logesh Kannaa">
+                    <div class="ldr-photo-wrapper">
+                        <img class="ldr-photo" src="images/lokesh.jpeg" alt="Logesh Kannaa">
+                    </div>
                     <div class="ldr-info">
                         <span class="ldr-badge">Chief Sales Officer</span>
                         <h4 class="ldr-name">Logesh Kannaa</h4>
@@ -529,7 +537,9 @@
 
                 <!-- Mohammed Wasim -->
                 <div class="ldr-row">
-                    <img class="ldr-photo" src="images/Wasim.jpeg" alt="Mohammed Wasim">
+                    <div class="ldr-photo-wrapper">
+                        <img class="ldr-photo" src="images/Wasim.jpeg" alt="Mohammed Wasim">
+                    </div>
                     <div class="ldr-info">
                         <span class="ldr-badge">Chief Marketing Officer</span>
                         <h4 class="ldr-name">Mohammed Wasim</h4>
