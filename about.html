@@ -201,11 +201,42 @@
         .value-item p { font-size: 0.9rem; color: #666; margin: 0; line-height: 1.5; }
 
         /* ===== LEADERSHIP CARD STYLES ===== */
-        .leadership-section { padding: 80px 0; }
+        .leadership-section { 
+            padding: 80px 0; 
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .leadership-section::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: rgba(157, 0, 255, 0.15);
+            filter: blur(100px);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .leadership-section::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 132, 255, 0.15);
+            filter: blur(100px);
+            border-radius: 50%;
+            z-index: 0;
+        }
 
         .leadership-section-header {
             text-align: center;
             margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
         }
         .leadership-section-header .section-badge {
             display: inline-block;
@@ -242,6 +273,8 @@
             gap: 60px;
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         .ldr-row {
             display: flex;
@@ -249,18 +282,25 @@
             gap: 50px;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease;
+            
+            /* Glassmorphism Effect */
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
         }
         .ldr-row.visible { 
             opacity: 1; 
             transform: translateY(0); 
-            transition: opacity 0.6s ease, transform 0.4s ease; /* changed from 0.6 to 0.4 for hover */
+            transition: opacity 0.6s ease, transform 0.4s ease, box-shadow 0.4s ease;
         }
         .ldr-row.visible:hover {
             transform: translateY(-8px);
-        }
-        .ldr-row:hover .ldr-photo {
-            box-shadow: 0 25px 50px rgba(26, 115, 232, 0.15);
+            box-shadow: 0 25px 50px rgba(26, 115, 232, 0.12);
         }
         .ldr-row:nth-child(even) { flex-direction: row-reverse; }
         .ldr-photo { width: 350px; height: 350px; border-radius: 20px; object-fit: cover; object-position: center top; flex-shrink: 0; box-shadow: 0 15px 40px rgba(0,0,0,0.08); transition: box-shadow 0.4s ease; }
@@ -488,7 +528,7 @@
 
                 <!-- Mohammed Wasim -->
                 <div class="ldr-row">
-                    <img class="ldr-photo" src="images/Mohammed Wasim.jpeg" alt="Mohammed Wasim">
+                    <img class="ldr-photo" src="images/Wasim.jpeg" alt="Mohammed Wasim">
                     <div class="ldr-info">
                         <span class="ldr-badge">Chief Marketing Officer</span>
                         <h4 class="ldr-name">Mohammed Wasim</h4>
